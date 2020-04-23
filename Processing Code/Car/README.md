@@ -1,3 +1,3 @@
 Brincando com Processing ...
 
-![Game Car](/AchcarLucas/Engenharia-F-sica-USP-/blob/master/Processing%20Code/Car/car_readme.png?raw=true)
+![Game Car](https://github.com/AchcarLucas/Engenharia-F-sica-USP-/blob/master/Processing%20Code/Car/car_readme.png)
