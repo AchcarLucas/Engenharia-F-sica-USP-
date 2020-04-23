@@ -132,7 +132,7 @@ void setup() {
   size(1024,762);
   smooth();
   car1 = new CarController(new PVector(400, 300), new PVector(1.0f, 1.0f), -0.1f);
-  //car1.setImage("car.png");
+  car1.setImage("https://github.com/AchcarLucas/Engenharia-F-sica-USP-/blob/master/Processing%20Code/Car/car.png");
 }
 
 void draw() {
