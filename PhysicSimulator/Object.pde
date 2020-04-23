@@ -38,7 +38,7 @@ public class classObject {
         if(DebugMode) {
           stroke(255, 255, 255);
           line(r_position.x * resolution, r_position.y * resolution, p.position.x * resolution, p.position.y * resolution);
-          text(r_name, p.position.x, p.position.y);
+          text(r_name, p.position.x * resolution, (p.position.y * resolution) + 10.0f);
           fill(255, 255, 255);
           text(dist/1000.0f + "(km)", (p.position.x + r_position.x)* resolution / 2, (p.position.y + r_position.y)* resolution / 2);
           text(p.mass + "(kg)", p.position.x * resolution, p.position.y * resolution - 10.0f);
