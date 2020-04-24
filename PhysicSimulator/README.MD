@@ -49,14 +49,15 @@ para usar a força no objeto, utilize a classe typeForceField
 
 Ex: 
 ```
-typeForceField _tff1 = new typeForceField(enumForce.ATTRACT_FIELD, sunPosition, sun_mass);
+typeForceField _tff1 = new typeForceField(enumForce.ATTRACT_FIELD, sunPosition, sun_mass, "Terra");
 typeForceObject _tfo1 = typeForceObject(enumType.REPULSE_FIELD, PVector(1,0f, 0.0f, 0.0f), 0.1f)
 ```
 
-A classe typeForceField possui 2 funções de sobrescrita
+A classe typeForceField possui 3 funções de sobrescrita
 
 ```
-typeForceField(enumForce type, PVector position, float mass)
+typeForceField(enumForce type, PVector position, float mass, String name)
+typeForceField(enumForce type, PVector position, String name)
 typeForceField(enumForce type, PVector position)
 ```
 
@@ -78,8 +79,8 @@ F = m*M*G / R^2
 A classe typeForceObject possui 2 funções de sobrescrita
 
 ```
-typeForceObject(enumForce type, PVector force, float t_m_impulse)
-typeForceObject(enumForce type, PVector force)
+typeForceObject(enumForce type, PVector force, float t_m_impulse, String name)
+typeForceObject(enumForce type, PVector force, String name)
 ```
 
 O enumForce define o tipo de força
@@ -171,5 +172,16 @@ classParticle(PVector r0_position, PVector r0_velocity)
 
 O código já possui um exemplo ;D
 
-![Image 1](https://raw.githubusercontent.com/AchcarLucas/Engenharia-F-sica-USP-/master/PhysicSimulator/image/image_1.png)![Image 2](https://raw.githubusercontent.com/AchcarLucas/Engenharia-F-sica-USP-/master/PhysicSimulator/image/image_2.png)
+Caso queira remover os Vetores, Nomes e Linhas, deixando apenas as partículas, vá até 
 
+```
+public boolean DebugMode = true;
+public boolean DebugForce = true;
+public boolean DebugName = true;
+```
+
+E coloque false no que deseja ...
+
+![Image 1](https://raw.githubusercontent.com/AchcarLucas/Engenharia-F-sica-USP-/master/PhysicSimulator/image/image_1.png)
+![Image 2](https://raw.githubusercontent.com/AchcarLucas/Engenharia-F-sica-USP-/master/PhysicSimulator/image/image_2.png)
+![Image 3](https://raw.githubusercontent.com/AchcarLucas/Engenharia-F-sica-USP-/master/PhysicSimulator/image/image_3.png)
