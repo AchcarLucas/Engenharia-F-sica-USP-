@@ -28,25 +28,25 @@ class typeForceObject {
   public PVector force;
   public String name;
   
-  typeForceObject(enumForce type, PVector force, float t_m_impulse, String name) {
+  private void _typeForceObject(enumForce type, PVector force, float t_m_impulse, String name) {
     this.type = type;
     this.force = force;
     this.t_m_impulse = t_m_impulse;
     this.name = name;
+    if(name.isEmpty())
+      this.name = "none_" + second()+millis() + "_" + (int)random(Integer.MAX_VALUE);
+  }
+  
+  typeForceObject(enumForce type, PVector force, float t_m_impulse, String name) {
+    this._typeForceObject(type, force, t_m_impulse, name);
   }
   
   typeForceObject(enumForce type, PVector force, String name) {
-    this.type = type;
-    this.force = force;
-    this.t_m_impulse = 0.0f;
-    this.name = name;
+    this._typeForceObject(type, force, type == enumForce.IMPULSE_OBJECT ? 1.0f : 0.0f, name);
   }
   
   typeForceObject(enumForce type, PVector force) {
-    this.type = type;
-    this.force = force;
-    this.t_m_impulse = 0.0f;
-    this.name = "none_" + second()+millis() + "_" + (int)random(Integer.MAX_VALUE);
+    this._typeForceObject(type, force, type == enumForce.IMPULSE_OBJECT ? 1.0f : 0.0f, new String());
   }
 }
 
@@ -61,25 +61,25 @@ class typeForceField {
   public float mass;
   public String name;
   
-  typeForceField(enumForce type, PVector position, float mass, String name) {
+  private void _typeForceField(enumForce type, PVector position, float mass, String name) {
     this.type = type;
     this.position = position;
     this.mass = mass;
     this.name = name;
+    if(name.isEmpty())
+      this.name = "none_" + second()+millis() + "_" + (int)random(Integer.MAX_VALUE);
+  }
+  
+  typeForceField(enumForce type, PVector position, float mass, String name) {
+    this._typeForceField(type, position, mass, name);
   }
   
   typeForceField(enumForce type, PVector position, String name) {
-    this.type = type;
-    this.position = position;
-    this.mass = 1.0f;
-    this.name = name;
+    this._typeForceField(type, position, 1.0f, name);
   }
   
   typeForceField(enumForce type, PVector position) {
-    this.type = type;
-    this.position = position;
-    this.mass = 1.0f;
-    this.name = "none_" + second()+millis() + "_" + (int)random(Integer.MAX_VALUE);
+    this._typeForceField(type, position, 1.0f, new String());
   }
   
   PVector getPosition() {
@@ -115,12 +115,26 @@ class classForce {
     return fn_field;
   }
   
+  // Calcula a força resultante das forças atuando no objeto
+  ArrayList<typeForceObject> getResultObjectForce() {
+    return fn_object;
+  }
+  
+  ArrayList<typeForceField> getResultFieldForce() {
+    return fn_field;
+  }
+  
   void addClassObject(classObject object) {
     on_class.add(object);
   }
   
   void addForceObject(typeForceObject f) {
     fn_object.add(f);
+  }
+  
+  void addForceField(typeForceField f) {
+    f.position.mult(1/resolution);
+    fn_field.add(f);
   }
   
   void removeAllClassObject() {
@@ -135,24 +149,12 @@ class classForce {
     fn_field.removeAll(fn_field);
   }
   
-  void addForceField(typeForceField f) {
-    f.position.mult(1/resolution);
-    fn_field.add(f);
-  }
-  
-  // Calcula a força resultante das forças atuando no objeto
-  ArrayList<typeForceObject> getResultObjectForce() {
-    return fn_object;
-  }
-  
-  ArrayList<typeForceField> getResultFieldForce() {
-    return fn_field;
-  }
-  
+  // Aqui é onde toda a física é atualizada
   void updatePhysic() {
     // UpdatePhysic todas as classObject
-    for(classObject p : on_class)
+    for(classObject p : on_class) {
       p.updatePhysic(fn_object, fn_field);
+    }
     
     Iterator<typeForceObject> it = fn_object.iterator();
     
