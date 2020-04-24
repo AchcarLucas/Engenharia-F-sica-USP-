@@ -1,6 +1,3 @@
-[Image 1](https://raw.githubusercontent.com/AchcarLucas/Engenharia-F-sica-USP-/master/PhysicSimulator/image/image_1.png)
-[Image 2](https://raw.githubusercontent.com/AchcarLucas/Engenharia-F-sica-USP-/master/PhysicSimulator/image/image_2.png)
-
 ### Physic Simulador
 O programa escrito em processing pode simular 2 tipos de força (Campo e Objeto)
 
@@ -173,4 +170,6 @@ classParticle(PVector r0_position, PVector r0_velocity)
 ```
 
 O código já possui um exemplo ;D
+
+![Image 1](https://raw.githubusercontent.com/AchcarLucas/Engenharia-F-sica-USP-/master/PhysicSimulator/image/image_1.png)![Image 2](https://raw.githubusercontent.com/AchcarLucas/Engenharia-F-sica-USP-/master/PhysicSimulator/image/image_2.png)
 
