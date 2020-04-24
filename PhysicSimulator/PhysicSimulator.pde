@@ -158,13 +158,11 @@ class classForce {
 
       if(obj.type == enumForce.IMPULSE_OBJECT) {
         obj.t_m_impulse -= 0.1f;
-      }
-      
-      if(obj.t_m_impulse <= 0.0f) {
-        it.remove();
-        continue;  
-      }
-      
+        if(obj.t_m_impulse <= 0.0f) {
+          it.remove();
+          continue;  
+        }
+      }     
     }
   }
 }
