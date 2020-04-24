@@ -1,56 +1,30 @@
 public boolean DebugMode = true;
-public boolean DebugForce = true;
-public boolean DebugName = true;
+public boolean DebugDistance = true;
+public boolean DebugArrow = true;
+public boolean DebugText = true;
 
 public classForce forces = new classForce();
   
 classParticle p1;
 
-typeForceField _tff1;
-typeForceField _tff2;
+typeForceField sum_1;
+typeForceField sum_2;
 
 void setupMain() {
+  float sun_mass = 0.5*pow(10, 17); // kg
+  float particle_mass = 0.5*pow(10, 7); // kg
   
-  // Movimento Circular
+  PVector sum_1_position = new PVector((width / 2) - 400, (height / 2) - 300);
+  PVector sum_2_position = new PVector((width / 2) - 300, (height / 2) - 200);
+  PVector particle_position = new PVector((width / 2) - 100, (height / 2) - 100);
   
-  /////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////
+  p1 = new classParticle(particle_position, new PVector(0.0f, +0.0f), particle_mass, "Earth");
   
-  // F = (G*m*M) / (R^2)
-  // Fcp = (m*v)^2 / R
-  // v = sqrt((M*G) / R)
+  sum_1 = new typeForceField(enumForce.ATTRACT_FIELD, sum_1_position, new PVector(0.0f, 10.0f, 0), sun_mass, "Sun_1");
+  forces.addForceField(sum_1);
   
-  /////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////
-  // Massa da particula
-  float sun_mass = pow(10, 20); // kg
-  float particle_mass = pow(10, 10); // kg
-  
-  println("Mass Sun: " + sun_mass + " kg");
-  println("Mass Particle: " + particle_mass + " kg");
-  
-  PVector sunPosition = new PVector((width / 2) - 100, height / 2);
-  PVector particlePosition = new PVector((width / 2), (height / 2) + 200);
-  PVector sun2Position = new PVector((width / 2) + 150, (height / 2));
-  
-  float R = PVector.dist(PVector.div(sunPosition, resolution), PVector.div(particlePosition, resolution));
-  
-  println("R: " + R / 1000.0f + " km");
-  
-  // Calculando velocidade tangencial para permanencer em movimento circular
-  float v = sqrt((sun_mass * G) / R);
-  
-  println("Velocity: " + v + " m/s");
-  
-  /////////////////////////////////////////////////////
-  
-   p1 = new classParticle(particlePosition, new PVector(v*1.5f, 0.0f), particle_mass, "Earth");
-  
-  _tff1 = new typeForceField(enumForce.ATTRACT_FIELD, sunPosition, sun_mass, "Sun_1");
-  forces.addForceField(_tff1);
-  
-  _tff2 = new typeForceField(enumForce.ATTRACT_FIELD, sun2Position, pow(10, 20), "Sun_2");
-  forces.addForceField(_tff2);
+  sum_2 = new typeForceField(enumForce.ATTRACT_FIELD, sum_2_position, new PVector(0.0f, 0.0f, 0), sun_mass, "Sun_2");
+  forces.addForceField(sum_2);
   
   forces.addClassObject(p1);
 }
@@ -64,8 +38,8 @@ void drawMain() {
   fill(255, 255, 0);
   stroke(255, 255, 0);
   
-  circle(_tff1.getPosition().x, _tff1.getPosition().y, 10.0f);
-  circle(_tff2.getPosition().x, _tff2.getPosition().y, 10.0f);
+  circle(sum_1.getPosition().x, sum_1.getPosition().y, 10.0f);
+  circle(sum_2.getPosition().x, sum_2.getPosition().y, 10.0f);
   
   forces.updatePhysic();
 }

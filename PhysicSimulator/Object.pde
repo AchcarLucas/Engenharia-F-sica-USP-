@@ -23,7 +23,7 @@ public class classObject {
         destroyed = true;
         return;
       }
-      
+
       if((p.type == enumForce.ATTRACT_FIELD || p.type == enumForce.REPULSE_FIELD)) {
         // Cria um vetor auxiliar com direção do objeto para o centro do campo de força, 
         // normaliza e multiplica pela constante gravitacional * m1 * m2 e divide pela distância ao quadrado
@@ -33,66 +33,52 @@ public class classObject {
         float intensity = G * (r_mass * p.mass) / pow(dist, 2);
         PF.mult(intensity);
         
+        // A força que é aplicada no objeto é aplicada ao Campo com sentido contrário
+        PVector tfn_result = new PVector(PF.x, PF.y);
+        tfn_result.mult(-1);
+        tfn_result.div(p.mass);
+        p.velocity.add(tfn_result);
+        p.position.add(p.velocity);
+        
         // Debug Mode (Line)
-        if(DebugMode) {
-          stroke(255, 255, 255);
-          line(r_position.x * resolution, r_position.y * resolution, p.position.x * resolution, p.position.y * resolution);
-          fill(255, 255, 255);
-          text(dist/1000.0f + "(km)", (p.position.x + r_position.x)* resolution / 2, (p.position.y + r_position.y)* resolution / 2);
-          text(p.mass + "(kg)", p.position.x * resolution, p.position.y * resolution - 10.0f);
+        if(DebugMode && DebugText)
+          drawText(p.mass, "kg", p.position.x * resolution, p.position.y * resolution - 10.0f);
+        
+        if(DebugMode && DebugDistance) { 
+          drawLine(r_position, p.position);
+          drawText(dist / 1000.0f, "km", new PVector(p.position.x + r_position.x, p.position.y + r_position.y));
         }
         
-        if(DebugName) {
-          fill(255, 255, 0);
-          text(p.name, p.position.x * resolution, (p.position.y * resolution) + 10.0f);
-        }
+        if(DebugText && DebugMode)
+          drawTextString(p.name, p.position.x * resolution, p.position.y * resolution + 10.0f);
         
         // Add força resultante
         fn_result.add(PF);
       }
     }
     
-    if(DebugForce) {
-      PVector TMP_V;
+    if(DebugMode && DebugText)
+      drawText(r_mass, "kg", r_position.x * resolution, r_position.y * resolution - 10.0f);
+    
+    if(DebugMode && DebugArrow) {
       // Draw Arrow, Text and Vector Result Force
-      if(fn_result.mag() != 0) {
-        stroke(0, 255, 0);
-        fill(0, 255, 0);
-        TMP_V = PVector.mult(fn_result, 1.0f);
-        TMP_V.normalize();
-        TMP_V.mult(50.0f);
-        line(r_position.x * resolution, r_position.y * resolution, r_position.x * resolution + TMP_V.x, r_position.y * resolution + TMP_V.y);
-        drawArrow(r_position.x * resolution + TMP_V.x, r_position.y * resolution + TMP_V.y, -1 * (getAngleToResultForce() + PI / 2), 2.0f);
-        text(fn_result.mag() + "(N)", r_position.x * resolution + TMP_V.x, r_position.y * resolution + TMP_V.y);
-      }
+      if(fn_result.mag() != 0)
+        drawArrow("N", fn_result, r_position);
       
       // Draw Arrow, Text and Vector Velocity
-      if(r_velocity.mag() != 0) {
-        stroke(255, 0, 0);
-        fill(255, 0, 0);
-        TMP_V = PVector.mult(r_velocity, 1.0f);
-        TMP_V.normalize();
-        TMP_V.mult(50.0f);
-        line(r_position.x * resolution, r_position.y * resolution, r_position.x * resolution + TMP_V.x, r_position.y * resolution + TMP_V.y);
-        drawArrow(r_position.x * resolution + TMP_V.x, r_position.y * resolution + TMP_V.y, -1 * (getAngleToVelocity() + PI / 2), 2.0f);
-        text(r_velocity.mag() + "(m/s)", r_position.x * resolution + TMP_V.x, r_position.y * resolution + TMP_V.y);
-      }
+      if(r_velocity.mag() != 0)
+        drawArrow("m/s", r_velocity, r_position, color(255,0,0));
     }
     
-    if(DebugName) {
-      fill(255, 255, 0);
-      text(r_name, r_position.x * resolution, (r_position.y * resolution) + 10.0f);
-    }
-    
+    if(DebugText && DebugMode)
+      drawTextString(r_name, r_position.x * resolution, (r_position.y * resolution) + 10.0f);
+
     // Divide pela massa do objeto para achar a aceleração
     fn_result.div(r_mass);
     
     // Angle da fn_result
-    if(r_velocity.mag() != 0)
-      angle_velocity = atan2(r_velocity.y, r_velocity.x);
-    
-    if(fn_result.mag() != 0)
-      angle_result_force = atan2(fn_result.y, fn_result.x);
+    if(r_velocity.mag() != 0) angle_velocity = atan2(r_velocity.y, r_velocity.x);
+    if(fn_result.mag() != 0) angle_result_force = atan2(fn_result.y, fn_result.x);
      
     // v0 + a*t (vector)
     r_velocity.add(fn_result);
@@ -118,6 +104,7 @@ public class classObject {
     this.r_velocity = r0_velocity;
     
     this.r_mass = 1.0f;
+    
     if(r0_mass > 0)
       this.r_mass = r0_mass;
       
@@ -126,7 +113,7 @@ public class classObject {
   }
   
   classObject(PVector r0_position, PVector r0_velocity) {
-    this.r_position = r0_position.mult(1/resolution);
+    this.r_position = r0_position.mult(1 / resolution);
     this.r_velocity = r0_velocity;
     this.r_mass = 1.0f;
     this.r_name = "none_" + second()+millis() + "_" + (int)random(Integer.MAX_VALUE);
