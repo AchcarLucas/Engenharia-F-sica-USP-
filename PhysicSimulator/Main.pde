@@ -1,5 +1,6 @@
 public boolean DebugMode = true;
 public boolean DebugForce = true;
+public boolean DebugName = true;
 
 public classForce forces = new classForce();
   
@@ -43,12 +44,12 @@ void setupMain() {
   
   /////////////////////////////////////////////////////
   
-   p1 = new classParticle(particlePosition, new PVector(v*1.5f, 0.0f), particle_mass);
+   p1 = new classParticle(particlePosition, new PVector(v*1.5f, 0.0f), particle_mass, "Earth");
   
-  _tff1 = new typeForceField(enumForce.ATTRACT_FIELD, sunPosition, sun_mass);
+  _tff1 = new typeForceField(enumForce.ATTRACT_FIELD, sunPosition, sun_mass, "Sun_1");
   forces.addForceField(_tff1);
   
-  _tff2 = new typeForceField(enumForce.ATTRACT_FIELD, sun2Position, pow(10, 20));
+  _tff2 = new typeForceField(enumForce.ATTRACT_FIELD, sun2Position, pow(10, 20), "Sun_2");
   forces.addForceField(_tff2);
   
   forces.addClassObject(p1);

@@ -26,17 +26,27 @@ class typeForceObject {
   public enumForce type;
   public float t_m_impulse;
   public PVector force;
+  public String name;
   
-  typeForceObject(enumForce type, PVector force, float t_m_impulse) {
+  typeForceObject(enumForce type, PVector force, float t_m_impulse, String name) {
     this.type = type;
     this.force = force;
     this.t_m_impulse = t_m_impulse;
+    this.name = name;
+  }
+  
+  typeForceObject(enumForce type, PVector force, String name) {
+    this.type = type;
+    this.force = force;
+    this.t_m_impulse = 0.0f;
+    this.name = name;
   }
   
   typeForceObject(enumForce type, PVector force) {
     this.type = type;
     this.force = force;
     this.t_m_impulse = 0.0f;
+    this.name = "none_" + second()+millis() + "_" + (int)random(Integer.MAX_VALUE);
   }
 }
 
@@ -49,17 +59,27 @@ class typeForceField {
   public enumForce type;
   public PVector position;
   public float mass;
+  public String name;
   
-  typeForceField(enumForce type, PVector position, float mass) {
+  typeForceField(enumForce type, PVector position, float mass, String name) {
     this.type = type;
     this.position = position;
     this.mass = mass;
+    this.name = name;
+  }
+  
+  typeForceField(enumForce type, PVector position, String name) {
+    this.type = type;
+    this.position = position;
+    this.mass = 1.0f;
+    this.name = name;
   }
   
   typeForceField(enumForce type, PVector position) {
     this.type = type;
     this.position = position;
     this.mass = 1.0f;
+    this.name = "none_" + second()+millis() + "_" + (int)random(Integer.MAX_VALUE);
   }
   
   PVector getPosition() {
