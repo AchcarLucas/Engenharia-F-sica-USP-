@@ -20,7 +20,7 @@ public class classObject {
     for(typeForceField p : fn_field) {
       float dist = PVector.dist(r_position, p.position);
      
-      if(dist < 1000.0f) {
+      if(dist < (1.0f / resolution)) {
         destroyed = true;
         return;
       }
