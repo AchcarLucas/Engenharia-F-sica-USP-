@@ -1,3 +1,6 @@
+[Image 1](https://github.com/AchcarLucas/Engenharia-F-sica-USP-/blob/master/PhysicSimulator/image/image_1.png)
+[Image 2](https://github.com/AchcarLucas/Engenharia-F-sica-USP-/blob/master/PhysicSimulator/image/image_2.png)
+
 ### Physic Simulador
 O programa escrito em processing pode simular 2 tipos de força (Campo e Objeto)
 
