@@ -38,13 +38,14 @@ public class classObject {
         if(DebugMode) {
           stroke(255, 255, 255);
           line(r_position.x * resolution, r_position.y * resolution, p.position.x * resolution, p.position.y * resolution);
-          if(DebugName) {
-            fill(255, 255, 0);
-            text(p.name, p.position.x * resolution, (p.position.y * resolution) + 10.0f);
-          }
           fill(255, 255, 255);
           text(dist/1000.0f + "(km)", (p.position.x + r_position.x)* resolution / 2, (p.position.y + r_position.y)* resolution / 2);
           text(p.mass + "(kg)", p.position.x * resolution, p.position.y * resolution - 10.0f);
+        }
+        
+        if(DebugName) {
+          fill(255, 255, 0);
+          text(p.name, p.position.x * resolution, (p.position.y * resolution) + 10.0f);
         }
         
         fn_result.add(PF);
@@ -77,11 +78,11 @@ public class classObject {
         drawArrow(r_position.x * resolution + TMP_V.x, r_position.y * resolution + TMP_V.y, -1 * (getAngleToVelocity() + PI / 2), 2.0f);
         text(r_velocity.mag() + "(m/s)", r_position.x * resolution + TMP_V.x, r_position.y * resolution + TMP_V.y);
       }
-      
-      if(DebugName) {
-        fill(255, 255, 0);
-        text(r_name, r_position.x * resolution, (r_position.y * resolution) + 10.0f);
-      }
+    }
+    
+    if(DebugName) {
+      fill(255, 255, 0);
+      text(r_name, r_position.x * resolution, (r_position.y * resolution) + 10.0f);
     }
     
     // Divide pela massa para achar a velocidade
