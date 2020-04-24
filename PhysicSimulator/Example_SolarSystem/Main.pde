@@ -1,6 +1,7 @@
-public boolean DebugMode = false;
-public boolean DebugForce = false;
-public boolean DebugName = true;
+public boolean DebugMode = true;
+public boolean DebugDistance = false;
+public boolean DebugArrow = false;
+public boolean DebugText = true;
 
 public classForce forces = new classForce();
   
