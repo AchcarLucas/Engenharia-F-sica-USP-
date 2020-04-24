@@ -150,13 +150,13 @@ class classForce {
   }
   
   void updatePhysic() {
-    
-    // UpdatePhysic all classObject
+    // UpdatePhysic todas as classObject
     for(classObject p : on_class)
       p.updatePhysic(fn_object, fn_field);
     
     Iterator<typeForceObject> it = fn_object.iterator();
     
+    // Verifica o impulso e remove aqueles que já estão zerados
     while(it.hasNext()) {
       typeForceObject obj = it.next();
 
