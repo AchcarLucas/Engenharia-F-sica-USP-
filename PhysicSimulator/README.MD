@@ -31,11 +31,11 @@ Ex:
 classParticle p1 = new classParticle(particlePosition, new PVector(v*1.5f, 0.0f), particle_mass);
 ```
 
-Suas funções podem ser utilizadas como abaixo:
-r0_position é um PVector de posição inicial da particula em (m) (definida a posição com base no tamanho da tela)
-r0_velocity é um PVector de velocidade inicial em (m/s)
-r0_mass é a massa em kg
-r0_name é o nome que deseja dar a particula
+Suas funções podem ser utilizadas como abaixo
+* r0_position é um PVector de posição inicial da particula em (m) (definida a posição com base no tamanho da tela)
+* r0_velocity é um PVector de velocidade inicial em (m/s)
+* r0_mass é a massa em kg
+* r0_name é o nome que deseja dar a particula
 
 ```
 classParticle(PVector r0_position, PVector r0_velocity, float r0_mass, String r0_name)
@@ -69,7 +69,7 @@ ATTRACT_FIELD ou REPULSE_FIELD
 position é a posição da força (força de campo no espaço, definida a posição com base no tamanho da tela)
 mass é a massa da particula
 
-(Obs: A função de campo obedece as Leis de Newton) 
+* (Obs: A função de campo obedece as Leis de Newton) 
 
 ```
 F = m*M*G / R^2
