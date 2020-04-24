@@ -12,7 +12,6 @@ public class classObject {
     
     PVector fn_result = new PVector();
     
-    // Acha a força resultante
     for(typeForceObject p : fn_object) {
       fn_result.add(p.force);
     }
@@ -27,7 +26,7 @@ public class classObject {
       
       if((p.type == enumForce.ATTRACT_FIELD || p.type == enumForce.REPULSE_FIELD)) {
         // Cria um vetor auxiliar com direção do objeto para o centro do campo de força, 
-        // normaliza e multiplica pela intensidade da força multiplicado pela distância ao quadrado
+        // normaliza e multiplica pela constante gravitacional * m1 * m2 e divide pela distância ao quadrado
         PVector PF = PVector.sub(r_position, p.position);
         PF.normalize();
         PF.mult(p.type == enumForce.ATTRACT_FIELD ? -1 : 1);
@@ -48,8 +47,8 @@ public class classObject {
           text(p.name, p.position.x * resolution, (p.position.y * resolution) + 10.0f);
         }
         
+        // Add força resultante
         fn_result.add(PF);
-        
       }
     }
     
@@ -85,7 +84,7 @@ public class classObject {
       text(r_name, r_position.x * resolution, (r_position.y * resolution) + 10.0f);
     }
     
-    // Divide pela massa para achar a velocidade
+    // Divide pela massa do objeto para achar a aceleração
     fn_result.div(r_mass);
     
     // Angle da fn_result
@@ -96,10 +95,9 @@ public class classObject {
       angle_result_force = atan2(fn_result.y, fn_result.x);
      
     // v0 + a*t (vector)
-    // Espaço por fator 0.1f
     r_velocity.add(fn_result);
     
-    // incrementa a velocidade na posição
+    // Incrementa a velocidade na posição
     r_position.add(r_velocity);
   }
   
@@ -158,5 +156,4 @@ public class classObject {
   void setDestroyed(boolean destroyed) {
     this.destroyed = destroyed;
   }
-  
 }

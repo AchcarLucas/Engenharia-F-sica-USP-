@@ -85,6 +85,10 @@ class typeForceField {
   PVector getPosition() {
     return PVector.mult(position, resolution);
   }
+  
+  void setPosition(PVector position) {
+    this.position = position;
+  }
 }
 
 /////////////////////////
