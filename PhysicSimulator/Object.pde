@@ -44,13 +44,10 @@ public class classObject {
         if(DebugMode && DebugText)
           drawText(p.mass, "kg", p.position.x * resolution, p.position.y * resolution - 10.0f);
         
-        if(DebugMode && DebugDistance) { 
+        if(DebugMode && DebugDistance) {
           drawLine(r_position, p.position);
           drawText(dist / 1000.0f, "km", new PVector(p.position.x + r_position.x, p.position.y + r_position.y));
         }
-        
-        if(DebugText && DebugMode)
-          drawTextString(p.name, p.position.x * resolution, p.position.y * resolution + 10.0f);
         
         // Add força resultante
         fn_result.add(PF);

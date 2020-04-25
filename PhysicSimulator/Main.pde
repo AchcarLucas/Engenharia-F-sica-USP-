@@ -18,7 +18,7 @@ void setupMain() {
   PVector sum_2_position = new PVector((width / 2) - 300, (height / 2) - 200);
   PVector particle_position = new PVector((width / 2) - 100, (height / 2) - 100);
   
-  p1 = new classParticle(particle_position, new PVector(0.0f, +0.0f), particle_mass, "Earth");
+  p1 = new classParticle(particle_position, new PVector(0.0f, +0.0f), particle_mass, "Planet");
   
   sum_1 = new typeForceField(enumForce.ATTRACT_FIELD, sum_1_position, new PVector(0.0f, 10.0f, 0), sun_mass, "Sun_1");
   forces.addForceField(sum_1);

@@ -207,6 +207,11 @@ class classForce {
           drawArrow("m/s", p_next.velocity, p_next.position, color(255, 0, 0));
         }
         
+        if(DebugText && DebugMode) {
+          drawTextString(p_next.name, p_next.position.x * resolution, p_next.position.y * resolution + 10.0f);
+          drawTextString(p.name, p.position.x * resolution, p.position.y * resolution + 10.0f);
+        }
+        
         p = p_next;
       }
     }
