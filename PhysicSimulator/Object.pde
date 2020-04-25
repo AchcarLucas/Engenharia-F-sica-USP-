@@ -40,6 +40,9 @@ public class classObject {
         p.velocity.add(tfn_result);
         p.position.add(p.velocity);
         
+        // Add força resultante
+        fn_result.add(PF);
+        
         // Debug Mode (Line)
         if(DebugMode && DebugText)
           drawText(p.mass, "kg", p.position.x * resolution, p.position.y * resolution - 10.0f);
@@ -50,13 +53,10 @@ public class classObject {
         }
         
         if(DebugMode && DebugArrow) {
-          drawArrow("N", tfn_result, p.position);
+          drawArrow("N", PF, r_position);
           drawArrow("m/s", p.velocity, p.position, color(255, 0, 0));
-          drawArrow("N", tfn_result.mult(-1), r_position);
+          drawArrow("N", PF.mult(-1), p.position);
         }
-        
-        // Add força resultante
-        fn_result.add(PF);
       }
     }
     

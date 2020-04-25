@@ -200,8 +200,8 @@ class classForce {
         }
         
         if(DebugMode && DebugArrow) {
-          drawArrow("N", tfn_result, p.position);
-          drawArrow("N", PF, p_next.position);
+          drawArrow("N", tfn_result.mult(p.mass), p.position);
+          drawArrow("N", PF.mult(p_next.mass), p_next.position);
           
           drawArrow("m/s", p.velocity, p.position, color(255, 0, 0));
           drawArrow("m/s", p_next.velocity, p_next.position, color(255, 0, 0));
