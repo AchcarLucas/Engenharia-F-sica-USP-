@@ -49,6 +49,12 @@ public class classObject {
           drawText(dist / 1000.0f, "km", new PVector(p.position.x + r_position.x, p.position.y + r_position.y));
         }
         
+        if(DebugMode && DebugArrow) {
+          drawArrow("N", tfn_result, p.position);
+          drawArrow("m/s", p.velocity, p.position, color(255, 0, 0));
+          drawArrow("N", tfn_result.mult(-1), r_position);
+        }
+        
         // Add força resultante
         fn_result.add(PF);
       }
@@ -58,10 +64,6 @@ public class classObject {
       drawText(r_mass, "kg", r_position.x * resolution, r_position.y * resolution - 10.0f);
     
     if(DebugMode && DebugArrow) {
-      // Draw Arrow, Text and Vector Result Force
-      if(fn_result.mag() != 0)
-        drawArrow("N", fn_result, r_position);
-      
       // Draw Arrow, Text and Vector Velocity
       if(r_velocity.mag() != 0)
         drawArrow("m/s", r_velocity, r_position, color(255,0,0));

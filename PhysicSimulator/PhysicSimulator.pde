@@ -214,6 +214,13 @@ class classForce {
         
         p = p_next;
       }
+    } else {
+      Iterator<typeForceField> itr = fn_field.iterator();
+      
+      if(itr.hasNext() && DebugText && DebugMode) {
+        typeForceField p = itr.next();
+        drawTextString(p.name, p.position.x * resolution, p.position.y * resolution + 10.0f);
+      }
     }
     
     // Verifica o impulso e remove aqueles que já estão zerados
