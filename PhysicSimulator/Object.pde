@@ -138,4 +138,8 @@ public class classObject {
   void setDestroyed(boolean destroyed) {
     this.destroyed = destroyed;
   }
+  
+  void setPosition(boolean position) {
+    this.r_position = position;
+  }
 }
