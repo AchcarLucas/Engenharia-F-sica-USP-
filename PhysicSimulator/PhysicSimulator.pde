@@ -207,6 +207,11 @@ class classForce {
           drawArrow("m/s", p_next.velocity, p_next.position, color(255, 0, 0));
         }
         
+        if(DebugMode && DebugText) {
+          drawText(p.mass, "kg", p.position.x * resolution, p.position.y * resolution - 10.0f);
+          drawText(p_next.mass, "kg", p_next.position.x * resolution, p_next.position.y * resolution - 10.0f);  
+        }
+        
         if(DebugText && DebugMode) {
           drawTextString(p_next.name, p_next.position.x * resolution, p_next.position.y * resolution + 10.0f);
           drawTextString(p.name, p.position.x * resolution, p.position.y * resolution + 10.0f);
@@ -220,6 +225,7 @@ class classForce {
       if(itr.hasNext() && DebugText && DebugMode) {
         typeForceField p = itr.next();
         drawTextString(p.name, p.position.x * resolution, p.position.y * resolution + 10.0f);
+        drawText(p.mass, "kg", p.position.x * resolution, p.position.y * resolution - 10.0f);
       }
     }
     
