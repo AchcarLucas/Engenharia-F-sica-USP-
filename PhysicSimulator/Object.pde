@@ -142,4 +142,8 @@ public class classObject {
   void setPosition(PVector position) {
     this.r_position = position;
   }
+  
+  void setVelocity(PVector velocity) {
+    this.r_velocity = velocity;
+  }
 }
