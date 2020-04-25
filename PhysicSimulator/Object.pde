@@ -139,7 +139,7 @@ public class classObject {
     this.destroyed = destroyed;
   }
   
-  void setPosition(boolean position) {
+  void setPosition(PVector position) {
     this.r_position = position;
   }
 }
