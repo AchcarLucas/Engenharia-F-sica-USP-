@@ -140,7 +140,7 @@ public class classObject {
   }
   
   void setPosition(PVector position) {
-    this.r_position = position;
+    this.r_position = position.mult(1/resolution);
   }
   
   void setVelocity(PVector velocity) {
