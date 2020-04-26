@@ -14,6 +14,8 @@ public class classObject {
     
     for(typeForceObject p : fn_object) {
       fn_result.add(p.force);
+      if(DebugMode && DebugArrow)
+        drawArrow("N", p.force, r_position);
     }
     
     for(typeForceField p : fn_field) {
