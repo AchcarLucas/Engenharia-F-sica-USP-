@@ -25,6 +25,7 @@ float calcVelocity(float sun_mass, float r) {
 
 void setupMain() {
   
+  distanceResolution  = 0.1f;
   /////////////////////////////////////////////////////
   planet = new ArrayList<classParticle>();
   typeForce = new ArrayList<typeForceObject>();
