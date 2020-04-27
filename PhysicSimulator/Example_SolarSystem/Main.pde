@@ -24,8 +24,8 @@ float calcVelocity(float sun_mass, float r) {
 }
 
 void setupMain() {
+  distanceResolution  = 0.001f;
   
-  distanceResolution  = 0.1f;
   /////////////////////////////////////////////////////
   planet = new ArrayList<classParticle>();
   typeForce = new ArrayList<typeForceObject>();
@@ -51,14 +51,14 @@ void setupMain() {
   PVector uranusPosition = new PVector((width / 2), (height / 2) + 320);
   PVector netunePosition = new PVector((width / 2), (height / 2) + 360);
   
-  float sun_mercury = PVector.dist(PVector.div(sunPosition, resolution), PVector.div(mercuryPosition, resolution));
-  float sun_venus = PVector.dist(PVector.div(sunPosition, resolution), PVector.div(VenusPosition, resolution));
-  float sun_earth = PVector.dist(PVector.div(sunPosition, resolution), PVector.div(earthPosition, resolution));
-  float sun_mars = PVector.dist(PVector.div(sunPosition, resolution), PVector.div(marsPosition, resolution));
-  float sun_jupiter = PVector.dist(PVector.div(sunPosition, resolution), PVector.div(jupiterPosition, resolution));
-  float sun_saturn = PVector.dist(PVector.div(sunPosition, resolution), PVector.div(saturnPosition, resolution));
-  float sun_uranus = PVector.dist(PVector.div(sunPosition, resolution), PVector.div(uranusPosition, resolution));
-  float sun_netune = PVector.dist(PVector.div(sunPosition, resolution), PVector.div(netunePosition, resolution));
+  float sun_mercury = PVector.dist(PVector.div(sunPosition, distanceResolution), PVector.div(mercuryPosition, distanceResolution));
+  float sun_venus = PVector.dist(PVector.div(sunPosition, distanceResolution), PVector.div(VenusPosition, distanceResolution));
+  float sun_earth = PVector.dist(PVector.div(sunPosition, distanceResolution), PVector.div(earthPosition, distanceResolution));
+  float sun_mars = PVector.dist(PVector.div(sunPosition, distanceResolution), PVector.div(marsPosition, distanceResolution));
+  float sun_jupiter = PVector.dist(PVector.div(sunPosition, distanceResolution), PVector.div(jupiterPosition, distanceResolution));
+  float sun_saturn = PVector.dist(PVector.div(sunPosition, distanceResolution), PVector.div(saturnPosition, distanceResolution));
+  float sun_uranus = PVector.dist(PVector.div(sunPosition, distanceResolution), PVector.div(uranusPosition, distanceResolution));
+  float sun_netune = PVector.dist(PVector.div(sunPosition, distanceResolution), PVector.div(netunePosition, distanceResolution));
   
   /////////////////////////////////////////////////////
  
