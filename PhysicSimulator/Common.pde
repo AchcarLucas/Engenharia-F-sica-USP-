@@ -1,6 +1,6 @@
 void drawText(float value, String symbol, PVector position) {
   fill(255, 255, 255);
-  text(value + "(" + symbol + ")", (position.x * resolution) / 2, (position.y * resolution) / 2);
+  text(value + "(" + symbol + ")", (position.x * distanceResolution) / 2, (position.y * distanceResolution) / 2);
 }
 
 void drawText(float value, String symbol, float x, float y) {
@@ -20,7 +20,7 @@ void drawTextString(String str, float x, float y) {
 
 void drawLine(PVector a, PVector b) {
   stroke(255, 255, 255);
-  line(a.x * resolution, a.y * resolution, b.x * resolution, b.y * resolution);
+  line(a.x * distanceResolution, a.y * distanceResolution, b.x * distanceResolution, b.y * distanceResolution);
 }
 
 float forceNewton(float m1, float m2, float dist, float const_g) {

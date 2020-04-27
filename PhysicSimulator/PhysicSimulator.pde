@@ -5,8 +5,8 @@ import java.util.*;
 /////////////////////////
 /////////////////////////
 
-protected float resolution = 0.001f;
-protected float G = 6.67408*pow(10, -11);
+public float distanceResolution = 0.01f;
+public float G = 6.67408*pow(10, -11);
 
 /////////////////////////
 /////////////////////////
@@ -91,7 +91,7 @@ class typeForceField {
   }
   
   PVector getPosition() {
-    return PVector.mult(position, resolution);
+    return PVector.mult(position, distanceResolution);
   }
   
   void setPosition(PVector position) {
@@ -141,7 +141,7 @@ class classForce {
   }
   
   void addForceField(typeForceField f) {
-    f.position.mult(1/resolution);
+    f.position.mult(1/distanceResolution);
     fn_field.add(f);
   }
   
@@ -208,13 +208,13 @@ class classForce {
         }
         
         if(DebugMode && DebugText) {
-          drawText(p.mass, "kg", p.position.x * resolution, p.position.y * resolution - 10.0f);
-          drawText(p_next.mass, "kg", p_next.position.x * resolution, p_next.position.y * resolution - 10.0f);  
+          drawText(p.mass, "kg", p.position.x * distanceResolution, p.position.y * distanceResolution - 10.0f);
+          drawText(p_next.mass, "kg", p_next.position.x * distanceResolution, p_next.position.y * distanceResolution - 10.0f);  
         }
         
         if(DebugText && DebugMode) {
-          drawTextString(p_next.name, p_next.position.x * resolution, p_next.position.y * resolution + 10.0f);
-          drawTextString(p.name, p.position.x * resolution, p.position.y * resolution + 10.0f);
+          drawTextString(p_next.name, p_next.position.x * distanceResolution, p_next.position.y * distanceResolution + 10.0f);
+          drawTextString(p.name, p.position.x * distanceResolution, p.position.y * distanceResolution + 10.0f);
         }
         
         p = p_next;
@@ -224,8 +224,8 @@ class classForce {
       
       if(itr.hasNext() && DebugText && DebugMode) {
         typeForceField p = itr.next();
-        drawTextString(p.name, p.position.x * resolution, p.position.y * resolution + 10.0f);
-        drawText(p.mass, "kg", p.position.x * resolution, p.position.y * resolution - 10.0f);
+        drawTextString(p.name, p.position.x * distanceResolution, p.position.y * distanceResolution + 10.0f);
+        drawText(p.mass, "kg", p.position.x * distanceResolution, p.position.y * distanceResolution - 10.0f);
       }
     }
     

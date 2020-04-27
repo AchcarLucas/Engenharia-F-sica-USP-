@@ -21,7 +21,7 @@ public class classObject {
     for(typeForceField p : fn_field) {
       float dist = PVector.dist(r_position, p.position);
      
-      if(dist < (1.0f / resolution)) {
+      if(dist < (1.0f / distanceResolution)) {
         destroyed = true;
         return;
       }
@@ -59,7 +59,7 @@ public class classObject {
     }
     
     if(DebugMode && DebugText)
-      drawText(r_mass, "kg", r_position.x * resolution, r_position.y * resolution - 10.0f);
+      drawText(r_mass, "kg", r_position.x * distanceResolution, r_position.y * distanceResolution - 10.0f);
     
     if(DebugMode && DebugArrow) {
       // Draw Arrow, Text and Vector Velocity
@@ -68,7 +68,7 @@ public class classObject {
     }
     
     if(DebugText && DebugMode)
-      drawTextString(r_name, r_position.x * resolution, (r_position.y * resolution) + 10.0f);
+      drawTextString(r_name, r_position.x * distanceResolution, (r_position.y * distanceResolution) + 10.0f);
 
     // Divide pela massa do objeto para achar a aceleração
     fn_result.div(r_mass);
@@ -85,7 +85,7 @@ public class classObject {
   }
   
   classObject(PVector r0_position, PVector r0_velocity, float r0_mass, String r0_name) {
-    this.r_position = r0_position.mult(1/resolution);
+    this.r_position = r0_position.mult(1/distanceResolution);
     this.r_velocity = r0_velocity;
     
     this.r_mass = 1.0f;
@@ -97,7 +97,7 @@ public class classObject {
   }
   
   classObject(PVector r0_position, PVector r0_velocity, float r0_mass) {
-    this.r_position = r0_position.mult(1/resolution);
+    this.r_position = r0_position.mult(1/distanceResolution);
     this.r_velocity = r0_velocity;
     
     this.r_mass = 1.0f;
@@ -110,7 +110,7 @@ public class classObject {
   }
   
   classObject(PVector r0_position, PVector r0_velocity) {
-    this.r_position = r0_position.mult(1 / resolution);
+    this.r_position = r0_position.mult(1 / distanceResolution);
     this.r_velocity = r0_velocity;
     this.r_mass = 1.0f;
     this.r_name = "none_" + second()+millis() + "_" + (int)random(Integer.MAX_VALUE);
@@ -118,7 +118,7 @@ public class classObject {
   }
   
   PVector getPosition() {
-    return PVector.mult(r_position, resolution);
+    return PVector.mult(r_position, distanceResolution);
   }
   
   String getName() {
@@ -142,7 +142,7 @@ public class classObject {
   }
   
   void setPosition(PVector position) {
-   this.r_position = position.mult(1/resolution);
+   this.r_position = position.mult(1/distanceResolution);
   }
   
   void setVelocity(PVector velocity) {

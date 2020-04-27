@@ -22,10 +22,10 @@ void drawArrow(String symbol, PVector v, PVector p) {
   TMP_V.normalize();
   TMP_V.mult(50.0f);
   
-  line(p.x * resolution, p.y * resolution, p.x * resolution + TMP_V.x, p.y * resolution + TMP_V.y);
-  drawArrow(p.x * resolution + TMP_V.x, p.y * resolution + TMP_V.y, -1 * (atan2(TMP_V.y, TMP_V.x) + PI / 2), 2.0f);
+  line(p.x * distanceResolution, p.y * distanceResolution, p.x * distanceResolution + TMP_V.x, p.y * distanceResolution + TMP_V.y);
+  drawArrow(p.x * distanceResolution + TMP_V.x, p.y * distanceResolution + TMP_V.y, -1 * (atan2(TMP_V.y, TMP_V.x) + PI / 2), 2.0f);
   
-  text(v.mag() + "("+symbol+")", p.x * resolution + TMP_V.x, p.y * resolution + TMP_V.y);
+  text(v.mag() + "("+symbol+")", p.x * distanceResolution + TMP_V.x, p.y * distanceResolution + TMP_V.y);
 }
 
 void drawArrow(String symbol, PVector v, PVector p, color  c) {
@@ -36,8 +36,8 @@ void drawArrow(String symbol, PVector v, PVector p, color  c) {
   TMP_V.normalize();
   TMP_V.mult(50.0f);
   
-  line(p.x * resolution, p.y * resolution, p.x * resolution + TMP_V.x, p.y * resolution + TMP_V.y);
-  drawArrow(p.x * resolution + TMP_V.x, p.y * resolution + TMP_V.y, -1 * (atan2(TMP_V.y, TMP_V.x) + PI / 2), 2.0f);
+  line(p.x * distanceResolution, p.y * distanceResolution, p.x * distanceResolution + TMP_V.x, p.y * distanceResolution + TMP_V.y);
+  drawArrow(p.x * distanceResolution + TMP_V.x, p.y * distanceResolution + TMP_V.y, -1 * (atan2(TMP_V.y, TMP_V.x) + PI / 2), 2.0f);
   
-  text(v.mag() + "("+symbol+")", p.x * resolution + TMP_V.x, p.y * resolution + TMP_V.y);
+  text(v.mag() + "("+symbol+")", p.x * distanceResolution + TMP_V.x, p.y * distanceResolution + TMP_V.y);
 }
