@@ -5,7 +5,7 @@ import java.util.*;
 /////////////////////////
 /////////////////////////
 
-protected float resolution = 0.01f;
+protected float resolution = 0.001f;
 protected float G = 6.67408*pow(10, -11);
 
 /////////////////////////

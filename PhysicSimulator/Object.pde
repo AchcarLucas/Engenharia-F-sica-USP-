@@ -9,7 +9,7 @@ public class classObject {
   
   public void updatePhysic(ArrayList<typeForceObject> fn_object, ArrayList<typeForceField> fn_field) {    
     if(hasDestroyed()) return;
-    
+      
     PVector fn_result = new PVector();
     
     for(typeForceObject p : fn_object) {
@@ -80,7 +80,7 @@ public class classObject {
     // v0 + a*t (vector)
     r_velocity.add(fn_result);
     
-    // Incrementa a velocidade na posição
+    //  a velocidade na posição
     r_position.add(r_velocity);
   }
   
@@ -142,7 +142,7 @@ public class classObject {
   }
   
   void setPosition(PVector position) {
-    this.r_position = position.mult(1/resolution);
+   this.r_position = position.mult(1/resolution);
   }
   
   void setVelocity(PVector velocity) {
