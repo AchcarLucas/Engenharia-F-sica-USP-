@@ -138,11 +138,11 @@ IMPULSE_OBJECT, ATTRACT_FIELD, REPULSE_FIELD, PERMANENT_OBJECT
 Os parametros
 
 ```
-protected float resolution = 0.01f;
+protected float distanceResolution = 0.01f;
 protected float G = 6.67408*pow(10, -11);
 ```
 
-resolution é a resolução das distâncias, quanto menor for esse valor, maior será o seu espaço, 0.01 equivale a 100km 0.001 a 1000km e assim por diante
+distanceResolution é a resolução das distâncias, quanto menor for esse valor, maior será o seu espaço, 0.01 equivale a 100km 0.001 a 1000km e assim por diante
 
 G é a Constante Gravitacional de Newton
 
@@ -176,8 +176,9 @@ Caso queira remover os Vetores, Nomes e Linhas, deixando apenas as partículas, 
 
 ```
 public boolean DebugMode = true;
-public boolean DebugForce = true;
-public boolean DebugName = true;
+public boolean DebugDistance = true;
+public boolean DebugArrow = true;
+public boolean DebugText = true;
 ```
 
 E coloque false no que deseja ...
