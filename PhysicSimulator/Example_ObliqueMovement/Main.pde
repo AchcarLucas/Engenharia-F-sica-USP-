@@ -24,6 +24,8 @@ void setupMain() {
   forces.addForceObject(new typeForceObject(enumForce.PERMANENT_OBJECT, new PVector(0.0f, 9.8f*mass_object), "Gravity"));
   
   forces.addClassObject(object);
+  
+  resolution = 0.01f;
 }
 
 void drawMain() {
