@@ -14,7 +14,7 @@ float force_y = -1000.0f;
 float impulse_time = 0.5f;
 
 void setupMain() {
-  distanceResolution  = 0.1f;
+  distanceResolution  = 0.01f;
 
   particle_position = new PVector(100, (height / 2));
   
