@@ -14,6 +14,8 @@ float force_y = -1000.0f;
 float impulse_time = 0.5f;
 
 void setupMain() {
+  distanceResolution  = 0.1f;
+
   particle_position = new PVector(100, (height / 2));
   
   object = new classParticle(new PVector(particle_position.x + 100, particle_position.y), new PVector(0.0f, 0.0), mass_object, "Object");
@@ -24,8 +26,6 @@ void setupMain() {
   forces.addForceObject(new typeForceObject(enumForce.PERMANENT_OBJECT, new PVector(0.0f, 9.8f*mass_object), "Gravity"));
   
   forces.addClassObject(object);
-  
-  resolution = 0.01f;
 }
 
 void drawMain() {
