@@ -11,14 +11,14 @@ PVector particle_position;
 float mass_object = 10.0f;
 float force_x =  1000.0f;
 float force_y = -1000.0f;
-float impulse_time = 0.5f;
+float impulse_time = 1.0f;
 
 void setupMain() {
-  distanceResolution  = 0.01f;
+  distanceResolution  = 0.1f;
 
   particle_position = new PVector(100, (height / 2));
   
-  object = new classParticle(new PVector(particle_position.x + 100, particle_position.y), new PVector(0.0f, 0.0), mass_object, "Object");
+  object = new classParticle(new PVector(particle_position.x, particle_position.y), new PVector(0.0f, 0.0), mass_object, "Object");
   
   // Impulse
   forces.addForceObject(new typeForceObject(enumForce.IMPULSE_OBJECT, new PVector(force_x, force_y), impulse_time, "IMPULSE"));
@@ -30,6 +30,16 @@ void setupMain() {
 
 void drawMain() {
   fill(255, 255, 255);
+  
+  float dist_horizontal = PVector.dist(PVector.div(particle_position, distanceResolution), PVector.div(new PVector(object.getPosition().x, particle_position.y), distanceResolution));
+  float dist_vertical = PVector.dist(PVector.div(particle_position, distanceResolution), PVector.div(new PVector(particle_position.x, object.getPosition().y), distanceResolution));
+  
+  stroke(255);
+  text(dist_horizontal*meterPixel + "(m)", (particle_position.x + object.getPosition().x) / 2, particle_position.y + 5);
+  line(particle_position.x, particle_position.y + 10, object.getPosition().x, particle_position.y + 10);
+  
+  text(dist_vertical*meterPixel + "(m)", particle_position.x + 5, (particle_position.y + object.getPosition().y) / 2);
+  line(particle_position.x, particle_position.y + 10, particle_position.x, object.getPosition().y + 10);
   
   if(!object.hasDestroyed())
     circle(object.getPosition().x, object.getPosition().y, 8.0f);
