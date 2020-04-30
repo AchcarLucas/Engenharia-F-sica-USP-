@@ -9,8 +9,8 @@ classParticle object;
 PVector particle_position;
 
 float mass_object = 10.0f;
-float force_x =  1000.0f;
-float force_y = -1000.0f;
+float force_x =  500.0f;
+float force_y = -500.0f;
 float impulse_time = 1.0f;
 
 void setupMain() {
@@ -18,7 +18,7 @@ void setupMain() {
 
   particle_position = new PVector(100, (height / 2));
   
-  object = new classParticle(new PVector(particle_position.x, particle_position.y), new PVector(0.0f, 0.0), mass_object, "Object");
+  object = new classParticle(new PVector(particle_position.x, particle_position.y), new PVector(0, 0), mass_object, "Object");
   
   // Impulse
   forces.addForceObject(new typeForceObject(enumForce.IMPULSE_OBJECT, new PVector(force_x, force_y), impulse_time, "IMPULSE"));
