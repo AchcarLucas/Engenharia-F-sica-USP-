@@ -78,19 +78,7 @@ void setupMain() {
     forces.addClassObject(p);
 }
 
-float _frameCount = 0;
-int started = millis();
-
 void drawMain() {
-  _frameCount++;
-  
-  if(millis() > started + 1000) {
-    started = millis();
-    println(_frameCount);
-    _frameCount = 0;
-  }
-  
-  
   fill(255, 255, 255);
   
   float size_planet = 5.0f;
