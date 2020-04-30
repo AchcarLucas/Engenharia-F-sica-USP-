@@ -1,5 +1,5 @@
 public boolean DebugMode = true;
-public boolean DebugDistance = false;
+public boolean DebugDistance = true;
 public boolean DebugArrow = false;
 public boolean DebugText = true;
 
@@ -24,6 +24,7 @@ float calcVelocity(float sun_mass, float r) {
 }
 
 void setupMain() {
+  frameRate(60);
   distanceResolution  = 0.001f;
   
   /////////////////////////////////////////////////////
@@ -32,7 +33,7 @@ void setupMain() {
  
   // Massa do sol e das particulas
   float sun_mass = pow(10, 20);
-  float mercury_mass = pow(10, 5);
+  float mercury_mass = pow(10, 1);
   float venus_mass = pow(10, 6);
   float earth_mass = pow(10, 7);
   float mars_mass = pow(10, 8);
@@ -61,16 +62,19 @@ void setupMain() {
   float sun_netune = PVector.dist(PVector.div(sunPosition, distanceResolution), PVector.div(netunePosition, distanceResolution));
   
   /////////////////////////////////////////////////////
+  
+  println(sun_mercury*meterPixel);
+  println(calcVelocity(sun_mass, sun_mercury*meterPixel));
  
   sun = new typeForceField(enumForce.ATTRACT_FIELD, sunPosition, sun_mass, "Sun_1");
-  planet.add(new classParticle(mercuryPosition, new PVector(calcVelocity(sun_mass, sun_mercury), 0.0f), mercury_mass, "Mercury"));
-  planet.add(new classParticle(VenusPosition, new PVector(calcVelocity(sun_mass, sun_venus), 0.0f), venus_mass, "Venus"));
-  planet.add(new classParticle(earthPosition, new PVector(calcVelocity(sun_mass, sun_earth), 0.0f), earth_mass, "Earth"));
-  planet.add(new classParticle(marsPosition, new PVector(calcVelocity(sun_mass, sun_mars), 0.0f), mars_mass, "Mars"));
-  planet.add(new classParticle(jupiterPosition, new PVector(calcVelocity(sun_mass, sun_jupiter), 0.0f), jupiter_mass, "Jupiter"));
-  planet.add(new classParticle(saturnPosition, new PVector(calcVelocity(sun_mass, sun_saturn), 0.0f), saturn_mass, "Saturn"));
-  planet.add(new classParticle(uranusPosition, new PVector(calcVelocity(sun_mass, sun_uranus), 0.0f), uranus_mass, "Uranus"));
-  planet.add(new classParticle(netunePosition, new PVector(calcVelocity(sun_mass, sun_netune), 0.0f), netune_mass, "Netune"));
+  planet.add(new classParticle(mercuryPosition, new PVector(calcVelocity(sun_mass, sun_mercury*meterPixel), 0.0f), mercury_mass, "Mercury"));
+  planet.add(new classParticle(VenusPosition, new PVector(calcVelocity(sun_mass, sun_venus*meterPixel), 0.0f), venus_mass, "Venus"));
+  planet.add(new classParticle(earthPosition, new PVector(calcVelocity(sun_mass, sun_earth*meterPixel), 0.0f), earth_mass, "Earth"));
+  planet.add(new classParticle(marsPosition, new PVector(calcVelocity(sun_mass, sun_mars*meterPixel), 0.0f), mars_mass, "Mars"));
+  planet.add(new classParticle(jupiterPosition, new PVector(calcVelocity(sun_mass, sun_jupiter*meterPixel), 0.0f), jupiter_mass, "Jupiter"));
+  planet.add(new classParticle(saturnPosition, new PVector(calcVelocity(sun_mass, sun_saturn*meterPixel), 0.0f), saturn_mass, "Saturn"));
+  planet.add(new classParticle(uranusPosition, new PVector(calcVelocity(sun_mass, sun_uranus*meterPixel), 0.0f), uranus_mass, "Uranus"));
+  planet.add(new classParticle(netunePosition, new PVector(calcVelocity(sun_mass, sun_netune*meterPixel), 0.0f), netune_mass, "Netune"));
  
   forces.addForceField(sun);
   
@@ -78,7 +82,19 @@ void setupMain() {
     forces.addClassObject(p);
 }
 
+float _frameCount = 0;
+int started = millis();
+
 void drawMain() {
+  _frameCount++;
+  
+  if(millis() > started + 1000) {
+    started = millis();
+    println(_frameCount);
+    _frameCount = 0;
+  }
+  
+  
   fill(255, 255, 255);
   
   float size_planet = 5.0f;
