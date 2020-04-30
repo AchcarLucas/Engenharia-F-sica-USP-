@@ -1,5 +1,5 @@
 public boolean DebugMode = true;
-public boolean DebugDistance = true;
+public boolean DebugDistance = false;
 public boolean DebugArrow = false;
 public boolean DebugText = true;
 
@@ -24,7 +24,7 @@ float calcVelocity(float sun_mass, float r) {
 }
 
 void setupMain() {
-  distanceResolution  = 0.001f;
+  distanceResolution  = 0.0005f;
   
   /////////////////////////////////////////////////////
   planet = new ArrayList<classParticle>();
@@ -78,19 +78,7 @@ void setupMain() {
     forces.addClassObject(p);
 }
 
-float _frameCount = 0;
-int started = millis();
-
-void drawMain() {
-  _frameCount++;
-  
-  if(millis() > started + 1000) {
-    started = millis();
-    println(_frameCount);
-    _frameCount = 0;
-  }
-  
-  
+void drawMain() {  
   fill(255, 255, 255);
   
   float size_planet = 5.0f;
