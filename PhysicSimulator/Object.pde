@@ -19,7 +19,7 @@ public class classObject {
     }
     
     for(typeForceField p : fn_field) {
-      float dist = PVector.dist(r_position, p.position);
+      float dist = PVector.dist(r_position, p.position)*meterPixel;
      
       if(dist < (1.0f / distanceResolution)) {
         destroyed = true;
@@ -40,9 +40,8 @@ public class classObject {
         tfn_result.mult(-1);
         tfn_result.div(p.mass);
         
-        // Se passaram apenas frameRate (Padrão 60 fps) de segundos
-        tfn_result.div(frameRate);
-        
+        // Divide a aceleração por 30 partes (1/30 segundos)
+        tfn_result.div(30);
         
         p.velocity.add(tfn_result);
         p.position.add(p.velocity);
@@ -52,7 +51,7 @@ public class classObject {
         
         if(DebugMode && DebugDistance) {
           drawLine(r_position, p.position);
-          drawText(dist*meterPixel / 1000.0f, "km", new PVector(p.position.x + r_position.x, p.position.y + r_position.y));
+          drawText(dist / 1000.0f, "km", new PVector(p.position.x + r_position.x, p.position.y + r_position.y));
         }
         
         if(DebugMode && DebugArrow) {
@@ -78,8 +77,8 @@ public class classObject {
     // Divide pela massa do objeto para achar a aceleração
     fn_result.div(r_mass);
     
-    // Se passaram apenas frameRate (Padrão 60 fps) de segundos
-    fn_result.div(frameRate);
+    // Divide a aceleração por 30 partes (1/30 segundos)
+    fn_result.div(30);
     
     // Angle da fn_result
     if(r_velocity.mag() != 0) angle_velocity = atan2(r_velocity.y, r_velocity.x);

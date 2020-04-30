@@ -175,7 +175,7 @@ class classForce {
       while(itr.hasNext()) {
         typeForceField p_next = itr.next();
         
-        float dist = PVector.dist(p_next.position, p.position);
+        float dist = PVector.dist(p_next.position, p.position) * meterPixel;
         PVector PF = PVector.sub(p.position, p_next.position);
         float intensity = forceNewton(p.mass, p_next.mass, dist, G);
         
@@ -186,7 +186,7 @@ class classForce {
         PVector tfn_result = new PVector(PF.x, PF.y);
         tfn_result.div(p.mass);
         // Se passaram apenas frameRate (Padrão 60 fps) de segundos
-        tfn_result.div(frameRate);
+        tfn_result.div(30);
         
         p.velocity.add(tfn_result);
         p.position.add(p.velocity);
@@ -194,15 +194,15 @@ class classForce {
         PF.mult(-1);
         PF.div(p_next.mass);
         
-        // Se passaram apenas frameRate (Padrão 60 fps) de segundos
-        PF.div(frameRate);
+        // Divide a aceleração por 30 partes (1/30 segundos)
+        PF.div(30);
         
         p_next.velocity.add(PF);
         p_next.position.add(p_next.velocity);
 
         if(DebugMode && DebugDistance) {
           drawLine(p_next.position, p.position);
-          drawText(dist*meterPixel / 1000.0f, "(km)", new PVector(p.position.x + p_next.position.x, p.position.y + p_next.position.y));
+          drawText(dist / 1000.0f, "(km)", new PVector(p.position.x + p_next.position.x, p.position.y + p_next.position.y));
         }
         
         if(DebugMode && DebugArrow) {
