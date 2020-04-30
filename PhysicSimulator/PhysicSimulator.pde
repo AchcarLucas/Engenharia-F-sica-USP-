@@ -7,6 +7,7 @@ import java.util.*;
 
 public float distanceResolution = 0.01f;
 public float G = 6.67408*pow(10, -11);
+public float meterPixel = 2.5 / 72.5;
 
 /////////////////////////
 /////////////////////////
@@ -184,6 +185,8 @@ class classForce {
        
         PVector tfn_result = new PVector(PF.x, PF.y);
         tfn_result.div(p.mass);
+        // Se passaram apenas frameRate (Padrão 60 fps) de segundos
+        tfn_result.div(frameRate);
         
         p.velocity.add(tfn_result);
         p.position.add(p.velocity);
@@ -191,12 +194,15 @@ class classForce {
         PF.mult(-1);
         PF.div(p_next.mass);
         
+        // Se passaram apenas frameRate (Padrão 60 fps) de segundos
+        PF.div(frameRate);
+        
         p_next.velocity.add(PF);
         p_next.position.add(p_next.velocity);
 
         if(DebugMode && DebugDistance) {
           drawLine(p_next.position, p.position);
-          drawText(dist / 1000.0f, "(km)", new PVector(p.position.x + p_next.position.x, p.position.y + p_next.position.y));
+          drawText(dist*meterPixel / 1000.0f, "(km)", new PVector(p.position.x + p_next.position.x, p.position.y + p_next.position.y));
         }
         
         if(DebugMode && DebugArrow) {

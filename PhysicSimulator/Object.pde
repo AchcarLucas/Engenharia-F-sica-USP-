@@ -39,6 +39,11 @@ public class classObject {
         PVector tfn_result = new PVector(PF.x, PF.y);
         tfn_result.mult(-1);
         tfn_result.div(p.mass);
+        
+        // Se passaram apenas frameRate (Padrão 60 fps) de segundos
+        tfn_result.div(frameRate);
+        
+        
         p.velocity.add(tfn_result);
         p.position.add(p.velocity);
         
@@ -47,7 +52,7 @@ public class classObject {
         
         if(DebugMode && DebugDistance) {
           drawLine(r_position, p.position);
-          drawText(dist / 1000.0f, "km", new PVector(p.position.x + r_position.x, p.position.y + r_position.y));
+          drawText(dist*meterPixel / 1000.0f, "km", new PVector(p.position.x + r_position.x, p.position.y + r_position.y));
         }
         
         if(DebugMode && DebugArrow) {
@@ -72,6 +77,9 @@ public class classObject {
 
     // Divide pela massa do objeto para achar a aceleração
     fn_result.div(r_mass);
+    
+    // Se passaram apenas frameRate (Padrão 60 fps) de segundos
+    fn_result.div(frameRate);
     
     // Angle da fn_result
     if(r_velocity.mag() != 0) angle_velocity = atan2(r_velocity.y, r_velocity.x);
