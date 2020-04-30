@@ -24,7 +24,6 @@ float calcVelocity(float sun_mass, float r) {
 }
 
 void setupMain() {
-  frameRate(60);
   distanceResolution  = 0.001f;
   
   /////////////////////////////////////////////////////
@@ -62,9 +61,6 @@ void setupMain() {
   float sun_netune = PVector.dist(PVector.div(sunPosition, distanceResolution), PVector.div(netunePosition, distanceResolution));
   
   /////////////////////////////////////////////////////
-  
-  println(sun_mercury*meterPixel);
-  println(calcVelocity(sun_mass, sun_mercury*meterPixel));
  
   sun = new typeForceField(enumForce.ATTRACT_FIELD, sunPosition, sun_mass, "Sun_1");
   planet.add(new classParticle(mercuryPosition, new PVector(calcVelocity(sun_mass, sun_mercury*meterPixel), 0.0f), mercury_mass, "Mercury"));
