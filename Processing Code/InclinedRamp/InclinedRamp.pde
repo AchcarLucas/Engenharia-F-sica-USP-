@@ -141,7 +141,7 @@ void draw() {
   }
   
   if(contactRamp && ball.getPosition().x > widthRamp.x) {
-    ball.setAcceleration(new PVector(0, 0.98f));
+    ball.setAcceleration(new PVector(0, accelGravity));
     contactRamp = false;  
   }
   
