@@ -82,7 +82,8 @@ void reconfigureRamp() {
   
   angleRamp = atan2(rampHeight, rampWidth);
   
-  ball = new Ball(new PVector(accelGravity * cos(angleRamp), accelGravity * sin(angleRamp)), new PVector(heightRamp.x, heightRamp.y), 10);
+  float Py = accelGravity * sin(angleRamp); // Gravidade em Py
+  ball = new Ball(new PVector(Py * cos(angleRamp), Py * sin(angleRamp)), new PVector(heightRamp.x, heightRamp.y), 10);
 }
 
 void keyPressed() {
