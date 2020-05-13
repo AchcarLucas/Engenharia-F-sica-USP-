@@ -10,7 +10,7 @@ float b = 0.5f;
 float I = pow(10, -6);
 // Recuperados
 float R = 0;
-// Susetiveis TOTAL - (INFECTADOS + RECUPERADOS)
+// Suscetiveis TOTAL - (INFECTADOS + RECUPERADOS)
 float S = N - (I + R);
 
 class Sample {
