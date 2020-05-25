@@ -1,7 +1,8 @@
 #include <iostream>
 #include <math.h>
 
-// Código desenvolvido por Lucas Campos
+// CÃ³digo desenvolvido por Lucas Campos
+// y = W(x) com z = x*e^x
 // Ref: https://en.wikipedia.org/wiki/Lambert_W_function (Numerical evaluation)
 
 using namespace std;
@@ -54,7 +55,7 @@ int main() {
     cout << "-------------------" << endl;
 
     /*
-        2º Way
+        2Âº Way
         x^x = 2
         ln(x^x) = ln(2)
         x*ln(x) = ln(2)
