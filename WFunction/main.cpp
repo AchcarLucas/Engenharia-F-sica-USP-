@@ -1,4 +1,5 @@
 // Código desenvolvido por Lucas Campos
+// y = W(x) com z = x*e^x
 // Ref: https://en.wikipedia.org/wiki/Lambert_W_function (Numerical evaluation)
 
 #include <iostream>
