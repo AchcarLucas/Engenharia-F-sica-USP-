@@ -1,7 +1,7 @@
 #include <iostream>
 #include <math.h>
 
-// Código desenvolvido por Lucas Campos
+// Código desenvolvido por Lucas Campos Achcar
 // y = W(x) com z = x*e^x
 // Ref: https://en.wikipedia.org/wiki/Lambert_W_function (Numerical evaluation)
 
