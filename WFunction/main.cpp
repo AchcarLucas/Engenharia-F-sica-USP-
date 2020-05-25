@@ -1,3 +1,6 @@
+// Código desenvolvido por Lucas Campos
+// Ref: https://en.wikipedia.org/wiki/Lambert_W_function (Numerical evaluation)
+
 #include <iostream>
 #include <math.h>
 
