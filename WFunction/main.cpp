@@ -1,9 +1,8 @@
-// CÃ³digo desenvolvido por Lucas Campos
-// y = W(x) com z = x*e^x
-// Ref: https://en.wikipedia.org/wiki/Lambert_W_function (Numerical evaluation)
-
 #include <iostream>
 #include <math.h>
+
+// Código desenvolvido por Lucas Campos
+// Ref: https://en.wikipedia.org/wiki/Lambert_W_function (Numerical evaluation)
 
 using namespace std;
 
@@ -54,6 +53,24 @@ int main() {
     cout << result << "^" << result << " = " << pow(result, result) << endl;
     cout << "-------------------" << endl;
 
+    /*
+        2º Way
+        x^x = 2
+        ln(x^x) = ln(2)
+        x*ln(x) = ln(2)
 
+        x^ln(x) = x (I)
+
+        (I) e^[ln(x)] * ln(x) = ln(2)
+
+        W(x) = y -> y = x*e^x (II)
+
+        (II) ln(x) = W(ln(2))
+        x = e^[W(ln(x)]
+    */
+
+    result = pow(euler, WFunction_HalleyApprox(ln(2), 100));
+    cout << "x = euler^[W(ln(2)] -> x = " << result << endl;
+    cout << "-------------------" << endl;
     return 0;
 }
