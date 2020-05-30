@@ -2,7 +2,7 @@
 #include <math.h>
 
 // Código desenvolvido por Lucas Campos Achcar
-// y = W(x) com z = x*e^x
+// y = W(x) com y = x*e^x
 // Ref: https://en.wikipedia.org/wiki/Lambert_W_function (Numerical evaluation)
 
 using namespace std;
