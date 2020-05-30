@@ -60,21 +60,24 @@ int main() {
         ln(x^x) = ln(2)
         x*ln(x) = ln(2)
 
-        x^ln(x) = x (I)
-
-        (I) e^[ln(x)] * ln(x) = ln(2)
+        x = e^ln(x) sub em baixo
         
-        ln(x)*e^(lnx) = ln(2)
-        w(ln(2)) = x*e^x
+        ln(x)*e^ln(x) = ln(2)
+        
+        /////////////////////
+        Como
+        x^e^x = y
+        e
+        x = W(y)
+        /////////////////////
         
         y = ln(2)
+        x = ln(x);
         
-        W(x) = x*e^x
-
-        W(x) = x -> z = x*e^x (II)
-
-        (II) ln(x) = W(ln(2))
-        x = e^[W(ln(x)]
+        ln(x) = W(ln(2))
+        
+        x = e^(W(ln(2))
+        
     */
 
     result = pow(euler, WFunction_HalleyApprox(ln(2), 100));
