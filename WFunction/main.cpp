@@ -63,8 +63,15 @@ int main() {
         x^ln(x) = x (I)
 
         (I) e^[ln(x)] * ln(x) = ln(2)
+        
+        ln(x)*e^(lnx) = ln(2)
+        w(ln(2)) = x*e^x
+        
+        y = ln(2)
+        
+        W(x) = x*e^x
 
-        W(x) = y -> y = x*e^x (II)
+        W(x) = x -> z = x*e^x (II)
 
         (II) ln(x) = W(ln(2))
         x = e^[W(ln(x)]
