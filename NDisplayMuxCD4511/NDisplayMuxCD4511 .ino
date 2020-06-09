@@ -1,3 +1,7 @@
+/*
+	Código Desenvolvido por Lucas Campos Achcar 09/06/2020.
+	Trabalho Projeto para Apresentação na aula de Introdução a eletrônica e computação física. 
+*/
 #define SERIAL_RUNNING false
 class MUX {
   	#define OUTPUT_PORT 3
