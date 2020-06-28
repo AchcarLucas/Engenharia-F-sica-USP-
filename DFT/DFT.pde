@@ -1,3 +1,9 @@
+/*
+Transformada Discreta de Fourier
+Desenvolvido por Lucas Campos Achcar
+Base: https://pt.qwe.wiki/wiki/Discrete_Fourier_transform
+*/
+
 static final int N_SAMPLE = 1000;
 
 int divScreenToTime = 100;
