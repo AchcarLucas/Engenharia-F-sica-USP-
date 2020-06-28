@@ -18,7 +18,8 @@ float generate_freq[] = {2, 3, 4, 5, 12, 20};
 class COMPLEX {
   float real;
   float imaginary;
-  float u;
+  float mag;
+  float phase;
 };
 
 float sample_data[];
@@ -56,13 +57,10 @@ void draw() {
     float m = 3;
     int offset = 200;
     for(int i = 0; i < SAMPLE_DFT - 1; ++i) {
-       if(dft_data[i].u > 0)
-        line(i*m, pos_y_f+offset, i*m, (-1)*dft_data[i].u*0.01 + pos_y_f+offset);
-       else
-        line(i*m, pos_y_f+offset, i*m, dft_data[i].u*0.01 + pos_y_f+offset);
+       line(i*m, pos_y_f+offset, i*m, (-1)*dft_data[i].mag*0.01 + pos_y_f+offset);
         
        textSize(8);
-       if(dft_data[i].u > 1.0f) {
+       if(dft_data[i].mag > 1.0f) {
          text((float)(i) / 10 + "Hz", i*m, pos_y_f + offset + 20);
        } 
     }
@@ -106,7 +104,7 @@ void calcReload() {
 }
 
 COMPLEX []DFT(float[]in_sample, int N) {
-  COMPLEX []out_sample = new COMPLEX[N]; //<>//
+  COMPLEX []out_sample = new COMPLEX[N];
   for(int i = 0; i < N; ++i)
     out_sample[i] = new COMPLEX();
     
@@ -119,7 +117,8 @@ COMPLEX []DFT(float[]in_sample, int N) {
       result_im += (-1)*in_sample[n]*sin((2*PI*k*n)/N_SAMPLE);
     }
     
-    out_sample[k].u = result_re - result_im;
+    out_sample[k].mag = sqrt(pow(result_re, 2) + pow(result_im, 2));
+    out_sample[k].phase = atan2(result_re, result_im);
     out_sample[k].real = result_re;
     out_sample[k].imaginary = result_im;
   }
