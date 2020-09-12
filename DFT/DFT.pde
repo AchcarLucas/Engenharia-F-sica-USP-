@@ -61,8 +61,7 @@ void draw() {
         
        textSize(8);
        if(dft_data[i].mag > 1.0f) {
-         // FS*SAMPLE_SIZE = 10
-         text((float)(i) / 10 + "Hz", i*m, pos_y_f + offset + 20);
+         text((float)(i) / (FS*N_SAMPLE) + "Hz", i*m, pos_y_f + offset + 20);
        } 
     }
    
