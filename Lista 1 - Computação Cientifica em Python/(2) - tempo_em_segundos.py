@@ -1,3 +1,4 @@
+# Lucas Campos Achcar
 print("Conversor de Tempo em Segundos para Horas, Minutos e Segundos")
 time_in_second = input("Digite um tempo em segundos: ")
 time_in_second = int(time_in_second)
