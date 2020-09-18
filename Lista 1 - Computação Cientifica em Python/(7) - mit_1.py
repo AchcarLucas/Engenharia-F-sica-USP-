@@ -1,3 +1,5 @@
+# Lucas Campos Achcar
+
 vogais = ['a', 'e', 'i', 'o', 'u']
 s = 'azcbobobegghakl'
 D = [v for v in s if v in vogais]
