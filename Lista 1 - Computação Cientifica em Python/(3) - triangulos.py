@@ -1,3 +1,5 @@
+# Lucas Campos Achcar
+
 print("Podemos formar um triangulo ?")
 # O Split faz a separação nas três variáveis
 a, b, c = input("Digite três medidas <a b c>: ").split()
