@@ -1,3 +1,5 @@
+# Lucas Campos Achcar
+
 import matplotlib.pyplot as plot
 import numpy as np
 import math
