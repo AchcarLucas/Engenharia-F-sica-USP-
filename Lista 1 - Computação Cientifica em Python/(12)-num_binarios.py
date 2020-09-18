@@ -1,3 +1,4 @@
+# Lucas Campos Achcar
 print("Conversor Binário - Decimal")
 b = input("Digite um valor binário: ")
 
