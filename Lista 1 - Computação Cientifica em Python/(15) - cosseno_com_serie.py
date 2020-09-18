@@ -1,3 +1,4 @@
+# Lucas Campos Achcar
 import math
 
 # precisão que queremos da série
