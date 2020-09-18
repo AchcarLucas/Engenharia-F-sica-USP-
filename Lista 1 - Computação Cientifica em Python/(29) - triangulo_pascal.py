@@ -1,3 +1,5 @@
+# Lucas Campos Achcar
+
 def create_pascal_triangle(n_line):
     # Cria o array para adicionar as linhas
     table = []
