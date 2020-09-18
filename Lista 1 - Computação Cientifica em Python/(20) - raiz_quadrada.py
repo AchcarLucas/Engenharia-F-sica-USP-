@@ -1,3 +1,4 @@
+# Lucas Campos Achcar
 accuracy = 10e-12
 
 r = input("Digite um valor para tirar a raiz quadrada: ")
