@@ -1,4 +1,5 @@
 # Lucas Campos Achcar
+
 print("Programa para calcular MDC entre dois valores")
 a, b = input("Digite dois valores <a b>: ").split()
 a = int(a)
