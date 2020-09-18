@@ -1,3 +1,4 @@
+# Lucas Campos Achcar
 running = True
 while running:
     bs = 'não é'
