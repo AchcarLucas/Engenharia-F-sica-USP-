@@ -1,4 +1,5 @@
 # Lucas Campos Achcar
+
 string = 'azcbobobegghakl'
 
 # Transformar as letras em números (ASCII)
