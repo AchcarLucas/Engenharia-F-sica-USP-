@@ -1,4 +1,5 @@
 # Lucas Campos Achcar
+
 print("Programa para saber todos os divisores")
 value = input("Digite um valor: ")
 value = int(value)
