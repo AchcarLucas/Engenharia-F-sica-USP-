@@ -1,3 +1,4 @@
+# Lucas Campos Achcar
 import math
 
 amount_iterator = 100000
