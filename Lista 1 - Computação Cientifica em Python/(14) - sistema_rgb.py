@@ -43,14 +43,7 @@ def convertDecToHex(v_dec):
 def _main():
     # Cor em Hex para Dec
     HexToDec = 'CD1F41'
-    
-    '''
-        Faz o movimento de 16 bits
-        Exemplo, se temos a seguinte sequência 11001101 11111111 11101111,
-        deslocamos 16 bits para a direita ficando com 00000000 00000000 11001101,
-        ai aplicamos um and de 0xFF para pegar apenas aquela parte (11001101),
-        se faz isso deslocando 8 bits e 0 bits respectivamente para termos R G e B
-    '''
+
 
     print("------------------------------------")
     print("Convertendo Hexadecimal para Decimal")
@@ -58,6 +51,14 @@ def _main():
     
     t_c_cor = convertHexToDec(HexToDec)
     print(f'Valor em Hexadecimal {HexToDec}\nValor em Decimal {t_c_cor}')
+
+    '''
+        Faz o movimento de 16 bits (shift right)
+        Exemplo, se temos a seguinte sequência 11001101 11111111 11101111,
+        deslocamos 16 bits para a direita ficando com 00000000 00000000 11001101,
+        ai aplicamos um and de 0xFF para pegar apenas aquela parte (11001101),
+        se faz isso deslocando 8 bits e 0 bits respectivamente para termos R G e B
+    '''
     
     r = (t_c_cor >> 16) & 0xFF
     g = (t_c_cor >> 8) & 0xFF
@@ -71,6 +72,10 @@ def _main():
 
     t_h_cor = convertDecToHex(t_c_cor)
     print(f'Valor em Decimal {t_c_cor}\nValor em Hexadecimal {t_h_cor}')
+
+    '''
+        Pega na string Hex os valores correspondente a R, G e B
+    '''
 
     r = t_h_cor[len(t_h_cor) - 6:len(t_h_cor) - 4]
     g = t_h_cor[len(t_h_cor) - 4:len(t_h_cor) - 2]
