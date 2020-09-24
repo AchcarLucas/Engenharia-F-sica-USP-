@@ -95,7 +95,7 @@ plot.ylim(min(y) - 1.00, max(y) + 1.00)
 
 plot.grid()
 
-plot.xlabel('Label X')  # veja que dá pra usar LaTeX!
+plot.xlabel('Label X')
 plot.ylabel('Label Y')
 
 plot.plot(line_x, line_y, c='blue', linestyle='--', label=f'Label')
