@@ -51,6 +51,7 @@ class CarController {
   
   // Faz a rotação do vector com base em um angulo
   PVector rotateVector(PVector w, float angle) {
+    // mudança de coordenada (rotação em 2D)
     return new PVector(cos(angle)*w.x+sin(angle)*w.y, -sin(angle)*w.x+cos(angle)*w.y);
   }
   
