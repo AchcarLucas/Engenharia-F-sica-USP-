@@ -1,5 +1,5 @@
 /*
-Projeto desenvolvido por Lucas Camps Achcar
+Projeto desenvolvido por Lucas Campos Achcar
 Do it yourself (DIY)
 Código receptor de IR
 Protocolo baseado em NEC Protocol
